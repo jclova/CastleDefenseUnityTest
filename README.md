@@ -34,6 +34,7 @@ From the GVR Unity CastleDefense sample project, do following:
 - Modify AndroidManifest-Cardboard.xml - include additional Activities from the treasurehuntlibrary-release.aar.
 - Modify [Assets/Game/Scripts/CannonBehaviour.cs](https://github.com/jclova/CastleDefenseUnityTest/blob/master/Assets/Game/Scripts/CannonBehaviour.cs) to launch another Activity when the surface is clicked:
 
+```
 public void FireAtTarget(Vector3 at) {
 AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 AndroidJavaObject ajo = jc.GetStatic<AndroidJavaObject>("currentActivity");
@@ -43,6 +44,7 @@ AndroidJavaClass ajc = new AndroidJavaClass("com.joshuapark.treasurehuntlibrary.
 // ajc.CallStatic("launchEmptyAppcompat", ajo);
 ajc.CallStatic("launchTreasureHunt", ajo);
 }
+```
 
 ## base.aar (version 1.0.0)
 1. 'delete '*.so' files in the ''arm64-v8a' folder.
