@@ -13,12 +13,12 @@ This project is an example to launch the TreasureHunt (GVR SDK Sample) from the 
 ## From Android Studio
 Github source: https://github.com/jclova/TreasureHuntAsLibrary
 
-To call TreasureHunt app from the Unity, I copied [https://github.com/googlevr/gvr-android-sdk/tree/master/samples/sdk-treasurehunt](TreasureHunt) source code to an Android library with small changes:
-- [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/ActivityLauncher.java](ActivityLauncher.java) - contains static method to launch TreasureHunt activity or Empty (prints hello world) activity.
-- [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/EmptyActivity.java](EmptyActivity.java) - A simple Activity which displays 'hello world'.
-- [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/EmptyActivityAppcompat.java](EmptyActivityAppcompat.java) - A simple Activity (that extends AppCompatActivity) which displays 'hello world'.
+To call TreasureHunt app from the Unity, I copied [TreasureHunt](https://github.com/googlevr/gvr-android-sdk/tree/master/samples/sdk-treasurehunt) source code to an Android library with small changes:
+- [ActivityLauncher.java](https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/ActivityLauncher.java) - contains static method to launch TreasureHunt activity or Empty (prints hello world) activity.
+- [EmptyActivity.java](https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/EmptyActivity.java) - A simple Activity which displays 'hello world'.
+- [EmptyActivityAppcompat.java](https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/EmptyActivityAppcompat.java) - A simple Activity (that extends AppCompatActivity) which displays 'hello world'.
 
-Above project generates [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary-release.aar](treasurehuntlibrary-release.aar)
+Above project generates [treasurehuntlibrary-release.aar](https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary-release.aar)
 
 ## From Unity
 Github source: https://github.com/jclova/CastleDefenseUnityTest
@@ -32,7 +32,7 @@ From the GVR Unity CastleDefense sample project, do following:
        appcompat-v7-24.2.1-javadoc.jar (optional)
        audio_no_arm64-v8a.aar (optional) - This is from the audio.aar (version 1.0.0). However, I removed *.so files in the 'arm64-v8a' folder. (Else you get other '.so' files not found error).
 - Modify AndroidManifest-Cardboard.xml - include additional Activities from the treasurehuntlibrary-release.aar.
-- Modify [https://github.com/jclova/CastleDefenseUnityTest/blob/master/Assets/Game/Scripts/CannonBehaviour.cs](Assets/Game/Scripts/CannonBehaviour.cs) to launch another Activity when the surface is clicked:
+- Modify [Assets/Game/Scripts/CannonBehaviour.cs](https://github.com/jclova/CastleDefenseUnityTest/blob/master/Assets/Game/Scripts/CannonBehaviour.cs) to launch another Activity when the surface is clicked:
 
 public void FireAtTarget(Vector3 at) {
 AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
