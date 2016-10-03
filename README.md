@@ -1,12 +1,12 @@
 ## Description
-This project was initiailly created to ask a question to Google team. Since the problem has been solved, I will include the working version for others.
-
 This project is an example to launch the TreasureHunt (GVR SDK Sample) from the CastleDefense (Unity GVR Sample) run on GVR7.1
 
+This project was initiailly created to ask a question to Google team. Since the problem has been solved, I will include the working version for others.
 
 
 ## Environment
 - Unity IDE version : GVR 7.1
+- Android GVR version 1.0.0
 
 ## Setup
 
