@@ -36,13 +36,13 @@ From the GVR Unity CastleDefense sample project, do following:
 
 ```csharp
 public void FireAtTarget(Vector3 at) {
-AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-AndroidJavaObject ajo = jc.GetStatic<AndroidJavaObject>("currentActivity");
-AndroidJavaClass ajc = new AndroidJavaClass("com.joshuapark.treasurehuntlibrary.ActivityLauncher");
+       AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+       AndroidJavaObject ajo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+       AndroidJavaClass ajc = new AndroidJavaClass("com.joshuapark.treasurehuntlibrary.ActivityLauncher");
 
-// ajc.CallStatic("launchEmpty", ajo);
-// ajc.CallStatic("launchEmptyAppcompat", ajo);
-ajc.CallStatic("launchTreasureHunt", ajo);
+       // ajc.CallStatic("launchEmpty", ajo);
+       // ajc.CallStatic("launchEmptyAppcompat", ajo);
+       ajc.CallStatic("launchTreasureHunt", ajo);
 }
 ```
 
