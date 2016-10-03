@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{72BB7771-1183-6D9F-33A5-2B7A52DA8D79}") = "CastleDefenseUnityTest", "Assembly-CSharp.csproj", "{9ECB67B7-8368-C4C4-4868-CE8979B34F69}"
+EndProject
+Project("{72BB7771-1183-6D9F-33A5-2B7A52DA8D79}") = "CastleDefenseUnityTest", "Assembly-CSharp-Editor.csproj", "{C6331B51-7FB7-C7C0-81B5-AA323CA32525}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ECB67B7-8368-C4C4-4868-CE8979B34F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ECB67B7-8368-C4C4-4868-CE8979B34F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ECB67B7-8368-C4C4-4868-CE8979B34F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ECB67B7-8368-C4C4-4868-CE8979B34F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6331B51-7FB7-C7C0-81B5-AA323CA32525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6331B51-7FB7-C7C0-81B5-AA323CA32525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6331B51-7FB7-C7C0-81B5-AA323CA32525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6331B51-7FB7-C7C0-81B5-AA323CA32525}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
