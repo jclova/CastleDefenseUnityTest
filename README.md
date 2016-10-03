@@ -1,63 +1,55 @@
-# Google VR Game Sample
-
 ## Description
-This example shows how to make a game for Daydream and Cardboard.
+This project was initiailly created to ask a question to Google. Since I found the solution, I will include the working version for others.
 
-## Instructions
-To run this you need to make sure you have the Google VR Unity SDK and Unity's
-Particle Effects in your project.
+This project is an example to launch the TreasureHunt (GVR SDK Sample) from the CastleDefense (Unity GVR Sample) run on GVR7.1
 
-### Google VR Unity SDK
-To get the Google VR SDK download it from:  
-[https://developers.google.com/vr/unity/download](https://developers.google.com/vr/unity/download)
 
-### Unity's Particle Systems
-Inside the Unity Project select at the toolbar:
-_Edit -> Import Package -> ParticleSystems._
 
-That's all!
+## Environment
+- Unity IDE version : GVR 7.1
 
-## Using the Unity Package
-If you want to import the package to a new project, there are a few things you
-will need to do to get it to work.
+## Setup
 
-Start by going through the instructions above to ensure Daydream support and
-that the particles aren't missing, then follow the steps in the next sections.
+## From Android Studio
+Github source: https://github.com/jclova/TreasureHuntAsLibrary
 
-### Enabling Audio
-The package is using Google VR's spatial audio.  
+To call TreasureHunt app from the Unity, I copied [https://github.com/googlevr/gvr-android-sdk/tree/master/samples/sdk-treasurehunt](TreasureHunt) source code to an Android library with small changes:
+- [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/ActivityLauncher.java](ActivityLauncher.java) - contains static method to launch TreasureHunt activity or Empty (prints hello world) activity.
+- [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/EmptyActivity.java](EmptyActivity.java) - A simple Activity which displays 'hello world'.
+- [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary/src/main/java/com/joshuapark/treasurehuntlibrary/EmptyActivityAppcompat.java](EmptyActivityAppcompat.java) - A simple Activity (that extends AppCompatActivity) which displays 'hello world'.
 
-Inside the Unity Project use the toolbar to go to Go to:  
-_Edit -> Project Settings -> Audio_  
-Change the _Spatializer Plugin_ to _GVR Audio Spatializer_.
+Above project generates [https://github.com/jclova/TreasureHuntAsLibrary/blob/master/treasurehuntlibrary-release.aar](treasurehuntlibrary-release.aar)
 
-### Performance Optimizations & Settings
-The project was optimized for specific settings shown below. Please feel free  
-to experiment with other setings.
+## From Unity
+Github source: https://github.com/jclova/CastleDefenseUnityTest
 
-#### Player Settings
-Inside the Unity Project use the toolbar to go to Go to:  
-_Edit -> Project Settings -> Player_
+From the GVR Unity CastleDefense sample project, do following:
+- Upgrade to GVR 7.1 (also Player Settings > Virtual Reality Supported > Cardboard is enabled)
+- Include following files at Assets/Plugins/Android
+       treasurehuntlibrary-release.aar
+       appcompat-v7-24.2.1.aar (optional)
+       appcompat-v7-24.2.1-sources.jar (optional)
+       appcompat-v7-24.2.1-javadoc.jar (optional)
+       audio_no_arm64-v8a.aar (optional) - This is from the audio.aar (version 1.0.0). However, I removed *.so files in the 'arm64-v8a' folder. (Else you get other '.so' files not found error).
+- Modify AndroidManifest-Cardboard.xml - include additional Activities from the treasurehuntlibrary-release.aar.
+- Modify [https://github.com/jclova/CastleDefenseUnityTest/blob/master/Assets/Game/Scripts/CannonBehaviour.cs](Assets/Game/Scripts/CannonBehaviour.cs) to launch another Activity when the surface is clicked:
 
-Inside _Resolution and Presentation_ select the following settings:  
-- **Default Orientation:** Landscape Left.
-- **Use 32-bit Display Buffer:** Disabled.
+public void FireAtTarget(Vector3 at) {
+AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+AndroidJavaObject ajo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+AndroidJavaClass ajc = new AndroidJavaClass("com.joshuapark.treasurehuntlibrary.ActivityLauncher");
 
-Inside _Other Settings_ are the following:
-- **Rendering Path:** Legacy Vertex Lit.
-- **Multithreaded Rendering:** Enabled.
-- **Static Batching:** Enabled.
-- **Dynamic Batching:** Enabled.
+// ajc.CallStatic("launchEmpty", ajo);
+// ajc.CallStatic("launchEmptyAppcompat", ajo);
+ajc.CallStatic("launchTreasureHunt", ajo);
+}
 
-#### Quality Settings
-Inside the Unity Project use the toolbar to go to Go to:  
-_Edit -> Project Settings -> Quality_
-  
-- **Anti Aliasing:** 2x Multi Sampling.
-- **Soft Particles:** Disabled.
-- **Realtime Reflection Probes:** Disabled.
-- **Shadows:** Disable Shadows.
+## base.aar (version 1.0.0)
+1. 'delete '*.so' files in the ''arm64-v8a' folder.
+2. Remove '<uses-feature android:glEsVersion="0x00020000" android:required="true"/>' in the AndroidManifest.xml in 'base.aar'
 
-#### GvrMain
-Inside the _Google VR SDK_, the _GvrMain_ (camera) object, consider setting  
-the _Distortion Correction_ to **Unity** and _Stereo Screen Scale_ to **0.8**.
+## audio.aar (version 1.0.0)
+1. 'delete '*.so' files in the ''arm64-v8a' folder.
+
+
+
