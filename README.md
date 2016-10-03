@@ -1,5 +1,5 @@
 ## Description
-This project was initiailly created to ask a question to Google. Since I found the solution, I will include the working version for others.
+This project was initiailly created to ask a question to Google team. Since the problem has been solved, I will include the working version for others.
 
 This project is an example to launch the TreasureHunt (GVR SDK Sample) from the CastleDefense (Unity GVR Sample) run on GVR7.1
 
